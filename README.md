@@ -21,3 +21,11 @@ rm -rf /Applications/Utilities/Adobe\ Creative\ Cloud/CoreSync
 sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --stop
 sudo /Applications/VMware\ Fusion.app/Contents/Library/vmnet-cli --start
 ```
+
+## 删除docker悬空镜像
+```sh
+# fish shell
+docker rmi (docker images -f "dangling=true" -q)
+# bash shell
+docker rmi $(docker images -f "dangling=true" -q)
+```
