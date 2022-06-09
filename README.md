@@ -2,7 +2,6 @@
 关于macos的实用内容。
 
 ## 杀掉可恶的adobe进程
-- 需要root权限
 ```sh
 #! /bin/bash
 ps -efh | grep Adobe | awk 'NR>1{print p, p1}{p=$2;p1=$8}'
