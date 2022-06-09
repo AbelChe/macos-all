@@ -1,3 +1,6 @@
+# macos-all
+关于macos的实用内容。
+
 * [macos-all](#macos-all)
    * [杀掉可恶的adobe进程](#杀掉可恶的adobe进程)
    * [重启vmware虚拟机的网络服务](#重启vmware虚拟机的网络服务)
@@ -6,9 +9,6 @@
    * [命令行多线程下载工具](#命令行多线程下载工具)
    * [nessus 破解](#nessus-破解)
    * [chrome系浏览器提示https打不开](#chrome系浏览器提示https打不开)
-
-# macos-all
-关于macos的实用内容。
 
 ## 杀掉可恶的adobe进程
 ```sh
