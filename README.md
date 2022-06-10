@@ -104,3 +104,11 @@ macos的nessus没法通过shell脚本没法完全控制nessus服务启停，破�
 ## chrome系浏览器提示https打不开
 
 问题页面键盘直接敲`thisisunsafe`
+
+## 一行命令解密VNC
+`6bcf2a4b6e5aca0f` 解密: `sT333ve2`
+```sh
+echo -n 6bcf2a4b6e5aca0f | xxd -r -p | openssl enc -des-cbc --nopad --nosalt -K e84ad660c4721ae0 -iv 0000000000000000 -d
+```
+
+## 
