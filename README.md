@@ -111,4 +111,6 @@ macos的nessus没法通过shell脚本没法完全控制nessus服务启停，破�
 echo -n 6bcf2a4b6e5aca0f | xxd -r -p | openssl enc -des-cbc --nopad --nosalt -K e84ad660c4721ae0 -iv 0000000000000000 -d
 ```
 
-## 
+## burpsuite 关闭http/2
+Project options ==> HTTP ==> HTTP/2
+取消勾选http2支持
