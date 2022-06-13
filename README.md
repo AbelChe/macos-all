@@ -9,6 +9,8 @@
    * [命令行多线程下载工具](#命令行多线程下载工具)
    * [nessus 破解](#nessus-破解)
    * [chrome系浏览器提示https打不开](#chrome系浏览器提示https打不开)
+   * [一行命令解密VNC](#一行命令解密vnc)
+   * [burpsuite 关闭http/2](#burpsuite-关闭http2)
 
 ## 杀掉可恶的adobe进程
 ```sh
