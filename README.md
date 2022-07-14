@@ -11,6 +11,10 @@
    * [chrome系浏览器提示https打不开](#chrome系浏览器提示https打不开)
    * [一行命令解密VNC](#一行命令解密vnc)
    * [burpsuite 关闭http/2](#burpsuite-关闭http2)
+   * [获取文件16进制字符串](#获取文件16进制字符串)
+   * [生成md文档目录](#生成md文档目录)
+   * [frp内网穿透配置](#frp内网穿透配置)
+   * [搜索各种key的正则](#搜索各种key的正则)
 
 ## 杀掉可恶的adobe进程
 ```sh
