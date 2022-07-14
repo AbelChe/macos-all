@@ -11,7 +11,7 @@
    * [chrome系浏览器提示https打不开](#chrome系浏览器提示https打不开)
    * [一行命令解密VNC](#一行命令解密vnc)
    * [burpsuite 关闭http/2](#burpsuite-关闭http2)
-   * [获取文件16进制字符串](#获取文件16进制字符串)
+   * [获取16进制字符串](#获取文件16进制字符串)
    * [生成md文档目录](#生成md文档目录)
    * [frp内网穿透配置](#frp内网穿透配置)
    * [搜索各种key的正则](#搜索各种key的正则)
@@ -121,10 +121,10 @@ echo -n 6bcf2a4b6e5aca0f | xxd -r -p | openssl enc -des-cbc --nopad --nosalt -K 
 Project options ==> HTTP ==> HTTP/2
 取消勾选http2支持
 
-## 获取文件16进制字符串
+## 获取16进制字符串
 ```sh
-echo "test str....." | xxd -c 1000000 -p -l 1000000
-# 74657374207374722e2e2e2e2e0a
+echo "test strxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx....." | xxd -c 1000000 -p -l 1000000
+# 746573742073747278787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878782e2e2e2e2e0a
 ```
 
 ## 生成md文档目录
