@@ -16,6 +16,7 @@
    * [frp内网穿透配置](#frp内网穿透配置)
    * [搜索各种key的正则](#搜索各种key的正则)
    * [vim使用粘贴模式](#vim使用粘贴模式)
+   * [python一行代码生成随机字符串](#python一行代码生成随机字符串)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -175,4 +176,11 @@ vscode使用
 只需要使用如下指令，然后再次进入`INSERT`模式，可见到左下角的提示变更为`INSERT (paset)`，这时我们直接粘贴就可以保持原文格式了。
 ```
 :set paste
+```
+
+## python一行代码生成随机字符串
+```python
+import string
+import random
+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(32))
 ```
