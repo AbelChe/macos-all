@@ -17,6 +17,7 @@
    * [搜索各种key的正则](#搜索各种key的正则)
    * [vim使用粘贴模式](#vim使用粘贴模式)
    * [python一行代码生成随机字符串](#python一行代码生成随机字符串)
+   * [git清除已提交的敏感信息](#git清除已提交的敏感信息)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -183,4 +184,10 @@ vscode使用
 import string
 import random
 ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(32))
+```
+
+## git清除已提交的敏感信息
+```sh
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path/to/file_to_del.txt' --prune-empty --tag-name-filter cat -- --all
+git push origin --force --all
 ```
