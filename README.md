@@ -213,4 +213,7 @@ def xor_crypt(data, key):
 def XORCrypt(data, key):
     return bytearray(a^b for a, b in zip(*map(bytearray, [data, key])))
 
+# key固定的情况下
+bytes(a^key for a in data_input)
+
 ```
