@@ -18,6 +18,7 @@
    * [vim使用粘贴模式](#vim使用粘贴模式)
    * [python一行代码生成随机字符串](#python一行代码生成随机字符串)
    * [git清除已提交的敏感信息](#git清除已提交的敏感信息)
+   * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -190,4 +191,26 @@ import random
 ```sh
 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path/to/file_to_del.txt' --prune-empty --tag-name-filter cat -- --all
 git push origin --force --all
+```
+
+## python3编码utf8导致的异或xor问题
+python3的编码一直以来都令人头疼，最近写东西，用到了python3的异或，逻辑没有问题，但是结果总是错误，几番折腾，发现是python3编码的问题，多方求助未果，遂上谷歌，找到了解决方案。
+感谢这位大佬剖析和解决方案：https://jiayu0x.com/2019/05/26/The_right_way_to_xor_encoding_with_python3/
+
+```
+# 第一种方案
+def xor_crypt(data, key):
+    cipher_data = []
+    len_data = len(data)
+    len_key = len(key)
+    for idx in range(len_data):
+        bias = key[idx % len_key]
+        curr_byte = data[idx]
+        cipher_data.append(bias ^ curr_byte)
+    return bytearray(cipher_data)
+
+# 第二种方案
+def XORCrypt(data, key):
+    return bytearray(a^b for a, b in zip(*map(bytearray, [data, key])))
+
 ```
