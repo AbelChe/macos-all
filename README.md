@@ -19,6 +19,7 @@
    * [python一行代码生成随机字符串](#python一行代码生成随机字符串)
    * [git清除已提交的敏感信息](#git清除已提交的敏感信息)
    * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
+   * [python实用的迭代器](python实用的迭代器)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -216,4 +217,26 @@ def XORCrypt(data, key):
 # key固定的情况下
 bytes(a^key for a in data_input)
 
+```
+
+## python实用的迭代器
+1. 从几个字符中生成所有组合
+```python
+import itertools
+
+SEED = '12ab'
+
+def strGenter(min, max):
+    for n in range(min, max):
+        for i in itertools.product(SEED, repeat=n):
+            yield i
+
+# 从12ab四个字符，生成长度为5的所有组合
+for i in strGenter(5, 6):
+    print(i)
+    # (1, 1, 1, 1, 1) (1, 1, 1, 1, 2) (1, 1, 1, 1, 'a') ................('b', 'b', 'b', 'b', 'b')
+
+# 从12ab四个字符，生成长度为6、7、8、9的所有组合
+for i in strGenter(6, 10):
+    print(i)
 ```
