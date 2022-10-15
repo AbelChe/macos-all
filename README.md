@@ -19,7 +19,7 @@
    * [python一行代码生成随机字符串](#python一行代码生成随机字符串)
    * [git清除已提交的敏感信息](#git清除已提交的敏感信息)
    * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
-   * [python实用的迭代器](python实用的迭代器)
+   * [python实用的迭代器](#python实用的迭代器)
 
 ## 杀掉可恶的adobe进程
 ```sh
