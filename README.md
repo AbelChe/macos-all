@@ -20,6 +20,7 @@
    * [git清除已提交的敏感信息](#git清除已提交的敏感信息)
    * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
    * [python实用的迭代器](#python实用的迭代器)
+   * [MacForge为扩展添加单独黑名单](#MacForge为扩展添加单独黑名单)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -239,4 +240,23 @@ for i in strGenter(5, 6):
 # 从12ab四个字符，生成长度为6、7、8、9的所有组合
 for i in strGenter(6, 10):
     print(i)
+```
+
+
+## MacForge为扩展添加单独黑名单
+MacForge是一款mac系统插件扩展工具，可以安装各种非常实用的扩展功能，比如moremenu
+moremenu可以折叠起应用菜单栏，为顶栏释放更多空间，但是很多应用收起菜单栏之后可能会导致程序崩溃，比如`网易云音乐.app`
+因为其他插件能够正常使用，所以只需要屏蔽这一个插件即可
+只需要修改该插件包中的黑名单文件即可，比如网易云音乐，讲id添加进去即可`<string>com.netease.163music</string>`
+`/Library/Application Support/MacEnhance/Plugins/moreMenu.bundle/Contents/Resources/globalBlacklist.plist`
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>com.apple.loginwindow</string>
+	<string>com.netease.163music</string>
+</array>
+</plist>
+
 ```
