@@ -21,6 +21,7 @@
    * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
    * [python实用的迭代器](#python实用的迭代器)
    * [MacForge为扩展添加单独黑名单](#MacForge为扩展添加单独黑名单)
+   * [ToDesk server进程自启问题](#ToDesk server进程自启问题)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -259,4 +260,12 @@ moremenu可以折叠起应用菜单栏，为顶栏释放更多空间，但是很
 </array>
 </plist>
 
+```
+
+## ToDesk server进程自启问题
+
+ToDesk server进程后台自启，kill之后还是会启动
+可以这样干掉
+```
+sudo launchctl unload /Library/LaunchDaemons/com.youqu.todesk.service.plist
 ```
