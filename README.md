@@ -22,6 +22,7 @@
    * [python实用的迭代器](#python实用的迭代器)
    * [MacForge为扩展添加单独黑名单](#MacForge为扩展添加单独黑名单)
    * [ToDesk Server进程自启问题](#ToDesk-server进程自启问题)
+   * [Navicat连接sqlserver数据库不显示系统库](#Navicat连接sqlserver数据库不显示系统库)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -269,3 +270,8 @@ ToDesk server进程后台自启，kill之后还是会启动
 ```
 sudo launchctl unload /Library/LaunchDaemons/com.youqu.todesk.service.plist
 ```
+
+## Navicat连接sqlserver数据库不显示系统库
+macos版的设置和windows版的位置不同
+windows版本，菜单栏“工具” “选项” “常规” 勾选“显示系统项目”
+macos版本，菜单栏“查看”勾选“显示隐藏的项目”
