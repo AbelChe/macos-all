@@ -273,5 +273,7 @@ sudo launchctl unload /Library/LaunchDaemons/com.youqu.todesk.service.plist
 
 ## Navicat连接sqlserver数据库不显示系统库
 macos版的设置和windows版的位置不同
+
 windows版本，菜单栏“工具” “选项” “常规” 勾选“显示系统项目”
+
 macos版本，菜单栏“查看”勾选“显示隐藏的项目”
