@@ -21,7 +21,7 @@
    * [python3编码utf8导致的异或xor问题](#python3编码utf8导致的异或xor问题)
    * [python实用的迭代器](#python实用的迭代器)
    * [MacForge为扩展添加单独黑名单](#MacForge为扩展添加单独黑名单)
-   * [ToDesk\ Server进程自启问题](#ToDesk\ server进程自启问题)
+   * [ToDesk Server进程自启问题](#ToDesk-server进程自启问题)
 
 ## 杀掉可恶的adobe进程
 ```sh
