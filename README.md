@@ -277,3 +277,8 @@ macos版的设置和windows版的位置不同
 windows版本，菜单栏“工具” “选项” “常规” 勾选“显示系统项目”
 
 macos版本，菜单栏“查看”勾选“显示隐藏的项目”
+
+## 一行命令查询fofa
+```sh
+echo -n 'app="Microsoft-Outlook" && icon_hash="1768726119" && country!="CN"' | base64 | xargs -I '{}' curl -s 'https://fofa.info/api/v1/search/all?email=xxxxxx@xxx.xxx&key=xxxxxxxxxxxxxxxxxxxxxxxx&size=100&fields=host&qbase64={}' | jq '.results[]' | sed 's/\"//g'
+```
