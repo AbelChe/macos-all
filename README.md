@@ -23,6 +23,7 @@
    * [MacForge为扩展添加单独黑名单](#MacForge为扩展添加单独黑名单)
    * [ToDesk Server进程自启问题](#ToDesk-server进程自启问题)
    * [Navicat连接sqlserver数据库不显示系统库](#Navicat连接sqlserver数据库不显示系统库)
+   * [一行命令查询fofa](#一行命令查询fofa)
 
 ## 杀掉可恶的adobe进程
 ```sh
