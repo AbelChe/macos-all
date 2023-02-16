@@ -24,6 +24,7 @@
    * [ToDesk Server进程自启问题](#ToDesk-server进程自启问题)
    * [Navicat连接sqlserver数据库不显示系统库](#Navicat连接sqlserver数据库不显示系统库)
    * [一行命令查询fofa](#一行命令查询fofa)
+   * [搜索可用的socks5代理](#搜索可用的socks5代理)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -288,17 +289,17 @@ echo -n 'app="Microsoft-Outlook" && icon_hash="1768726119" && country!="CN"' | b
 1. fofa
 修改url中的email和key
 ```sh
-echo -n 'protocol="socks5" && "Version:5 Method:No Authentication(0x00)" && after="2023-02-01"' | base64 | xargs -I '{}' curl -s 'https://fofa.info/api/v1/search/all?email=666666666@qq.com&key=xxxxxxxxxxxxxxxxxxx&size=500&fields=host&qbase64={}' | jq -r '.results[]' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi' && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
+echo -n 'protocol="socks5" && "Version:5 Method:No Authentication(0x00)" && after="2023-02-01"' | base64 | xargs -S 40960 -I '{}' curl -s 'https://fofa.info/api/v1/search/all?email=666666666@qq.com&key=xxxxxxxxxxxxxxxxxxx&size=500&fields=host&qbase64={}' | jq -r '.results[]' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi' && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
 ```
 
 2. zoomeye
 修改请求头中的API-KEY
 ```sh
-for i in `seq 1 15`; do echo $i && echo 'service:"socks5" +after:"2023-02-01" +banner:"Version:5 Method:No Authentication(0x00)"' | xargs -I \{\} curl -s -G --data-urlencode "query={}" "https://api.zoomeye.org/host/search?page=$i" -H "API-KEY:56xxxxxxxxxxxxxxxxxxxx86" | jq -r '.matches[] | [.ip, .portinfo.port] | join(":")' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi'; done && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
+for i in `seq 1 15`; do echo $i && echo 'service:"socks5" +after:"2023-02-01" +banner:"Version:5 Method:No Authentication(0x00)"' | xargs -S 40960 -I \{\} curl -s -G --data-urlencode "query={}" "https://api.zoomeye.org/host/search?page=$i" -H "API-KEY:56xxxxxxxxxxxxxxxxxxxx86" | jq -r '.matches[] | [.ip, .portinfo.port] | join(":")' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi'; done && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
 ```
 
 3. 360 quake
 修改请求头中的X-QuakeToken
 ```sh
-echo 'country: "China" AND service:"socks5" AND response:"Version: 5 Accepted Auth Method: 0x0 (No authentication)"' | awk '{ gsub(/"/,"\\\\\\\\\\\\\\""); print $0 }' | xargs -I \{\} curl -s -X POST -H "X-QuakeToken: xxxxxxxxxxxxxxxxxxxxxxx" -H "Content-Type: application/json" https://quake.360.net/api/v3/search/quake_service -d '{"query": "{}", "start": 0, "size": 200}' | jq -r '.data[] | [.ip,.port] | join(":")' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi' && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
+echo 'country: "China" AND service:"socks5" AND response:"Version: 5 Accepted Auth Method: 0x0 (No authentication)"' | awk '{ gsub(/"/,"\\\\\\\\\\\\\\""); print $0 }' | xargs -S 40960 -I \{\} curl -s -X POST -H "X-QuakeToken: xxxxxxxxxxxxxxxxxxxxxxx" -H "Content-Type: application/json" https://quake.360.net/api/v3/search/quake_service -d '{"query": "{}", "start": 0, "size": 200}' | jq -r '.data[] | [.ip,.port] | join(":")' | xargs -I \{\} bash -c 'echo -n {} && curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} >/dev/null; if [ $? -eq 0 ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi' && echo ----------------- && sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
 ```
