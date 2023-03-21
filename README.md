@@ -327,7 +327,7 @@ echo ----------------- && \
 sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
 ```
 
-# 空格预览关联自定义文件类型
+## 空格预览关联自定义文件类型
 
 MacOS安装[quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)之后仍然无法预览jsp asp等文件，解决方法参考：[https://www.jianshu.com/p/7a4dc9324fa7](https://www.jianshu.com/p/7a4dc9324fa7)
 
@@ -336,15 +336,15 @@ MacOS安装[quick-look-plugins](https://github.com/sindresorhus/quick-look-plugi
 mdls -name kMDItemContentType ./file.xxx
 ```
 留存一下我常用的后缀吧：
-| name | kMDItemContentType |
-|------|--------------------|
-| .aspx | dyn.ah62d4rv4ge80c65uta |
-| .asp | dyn.ah62d4rv4ge80c65u |
-| .jsp | dyn.ah62d4rv4ge80y65u |
-| .jspx | dyn.ah62d4rv4ge80y65uta |
-| .ashx | dyn.ah62d4rv4ge80c65kta |
-| .cna | dyn.ah62d4rv4ge80g5xb |
-| .nse | dyn.ah62d4rv4ge80665f |
+| name     | kMDItemContentType           |
+| :------- | :--------------------------- |
+| .aspx    | dyn.ah62d4rv4ge80c65uta      |
+| .asp     | dyn.ah62d4rv4ge80c65u        |
+| .jsp     | dyn.ah62d4rv4ge80y65u        |
+| .jspx    | dyn.ah62d4rv4ge80y65uta      |
+| .ashx    | dyn.ah62d4rv4ge80c65kta      |
+| .cna     | dyn.ah62d4rv4ge80g5xb        |
+| .nse     | dyn.ah62d4rv4ge80665f        |
 | .profile | dyn.ah62d4rv4ge81a6xtq3y023k |
 
 
