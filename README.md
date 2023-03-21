@@ -25,6 +25,7 @@
    * [Navicat连接sqlserver数据库不显示系统库](#Navicat连接sqlserver数据库不显示系统库)
    * [一行命令查询fofa](#一行命令查询fofa)
    * [搜索可用的socks5代理](#搜索可用的socks5代理)
+   * [空格预览关联自定义文件类型](#空格预览关联自定义文件类型)
 
 ## 杀掉可恶的adobe进程
 ```sh
@@ -324,4 +325,43 @@ xargs -I \{\} \
   bash -c 'echo -n {} && ip=$(curl -s ipinfo.io --connect-timeout 3 -m 5 --proxy socks5://{} | jq -r ".ip") && if [ $? -eq 0 ] && [ $ip ]; then printf " OK\n";echo {} >> /tmp/proxylist.txt; else echo ""; fi'; \
 echo ----------------- && \
 sort -k2n /tmp/proxylist.txt | sed '$!N; /^\(.*\)\n\1$/!P; D'
+```
+
+# 空格预览关联自定义文件类型
+
+MacOS安装[quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)之后仍然无法预览jsp asp等文件，解决方法参考：[https://www.jianshu.com/p/7a4dc9324fa7](https://www.jianshu.com/p/7a4dc9324fa7)
+
+获取扩展名对应的值
+```shell
+mdls -name kMDItemContentType ./file.xxx
+```
+留存一下我常用的后缀吧：
+| name | kMDItemContentType |
+|------|--------------------|
+| .aspx | dyn.ah62d4rv4ge80c65uta |
+| .asp | dyn.ah62d4rv4ge80c65u |
+| .jsp | dyn.ah62d4rv4ge80y65u |
+| .jspx | dyn.ah62d4rv4ge80y65uta |
+| .ashx | dyn.ah62d4rv4ge80c65kta |
+| .cna | dyn.ah62d4rv4ge80g5xb |
+| .nse | dyn.ah62d4rv4ge80665f |
+| .profile | dyn.ah62d4rv4ge81a6xtq3y023k |
+
+
+打开`~/Library/QuickLook/QLColorCode.qlgenerator/Contents/Info.plist`，使用xcode或者文本编辑器都行
+xcode的话直接在`Document types > Item 0 > Document Content Type UTIs (CFBundleDocumentTypes > Item 0 > LSItemContentTypes`添加即可
+```shell
+open ~/Library/QuickLook/QLColorCode.qlgenerator/Contents/Info.plist
+```
+
+vscode等文本编辑器的话，在`<key>LSItemContentTypes</key>`字段中添加如下
+```xml
+				<string>dyn.ah62d4rv4ge80c65uta</string>
+				<string>dyn.ah62d4rv4ge80c65u</string>
+				<string>dyn.ah62d4rv4ge80y65u</string>
+				<string>dyn.ah62d4rv4ge80g5xb</string>
+				<string>dyn.ah62d4rv4ge80665f</string>
+				<string>dyn.ah62d4rv4ge80c65kta</string>
+				<string>dyn.ah62d4rv4ge80y65uta</string>
+				<string>dyn.ah62d4rv4ge81a6xtq3y023k</string>
 ```
