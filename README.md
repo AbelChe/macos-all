@@ -27,6 +27,7 @@
   * [一行命令查询fofa](#一行命令查询fofa)
   * [搜索可用的socks5代理](#搜索可用的socks5代理)
   * [空格预览关联自定义文件类型](#空格预览关联自定义文件类型)
+  * [MacOS端微信小程序反编译](#MacOS端微信小程序反编译)
 
 ## 杀掉可恶的adobe进程
 
@@ -409,3 +410,12 @@ vscode等文本编辑器的话，在`<key>LSItemContentTypes</key>`字段中添�
 				<string>dyn.ah62d4rv4ge80y65uta</string>
 				<string>dyn.ah62d4rv4ge81a6xtq3y023k</string>
 ```
+
+## MacOS端微信小程序反编译
+
+3.8以上版本的MacOS端的微信可以直接获取到未加密的微信小程序包，路径如下：
+```
+/Users/AbelChe/Library/Containers/com.tencent.xinWeChat/Data/.wxapplet/packages
+```
+
+直接使用wxappUnpacker解包即可
