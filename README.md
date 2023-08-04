@@ -28,6 +28,7 @@
   * [搜索可用的socks5代理](#搜索可用的socks5代理)
   * [空格预览关联自定义文件类型](#空格预览关联自定义文件类型)
   * [MacOS端微信小程序反编译](#MacOS端微信小程序反编译)
+  * [编译安全（防止信息泄漏）](#编译安全（防止信息泄漏）)
 
 ## 杀掉可恶的adobe进程
 
@@ -419,3 +420,52 @@ vscode等文本编辑器的话，在`<key>LSItemContentTypes</key>`字段中添�
 ```
 
 直接使用wxappUnpacker解包即可
+
+
+## 编译安全（防止信息泄漏）
+
+各种编译类语言编译的可执行文件中默认会将我们的本地路径包含进去，看似无关紧要的信息有时可能会成为致命危害（比如编译的程序被分析，抓到ID，被溯源）
+
+这完全可以通过一些配置、参数将不必要的风险扼杀。
+
+最好的通杀解决方法就是不要使用带有自己ID的机器进行编译，比如可以使用虚拟机，但是这偶尔也会有环境搭建的重复工作。
+
+这里给出几种语言的解决方案
+
+### CSharp
+
+- 参考：https://www.saoniuhuo.com/question/detail-2577831.html
+
+以直接修改.csproj文件
+```
+<Project>
+<!-- ... -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- after 'Microsoft.CSharp.targets' for 'IntermediateOutputPath' to be defined -->
+    <PathMap>$(MSBuildProjectDirectory)\$(IntermediateOutputPath)=.</PathMap>
+  </PropertyGroup>
+</Project>
+```
+
+### RUST
+
+MacOS上交叉编译去除符号链接，修改~/.cargo/config
+```
+[target.x86_64-pc-windows-gnu]
+rustflags = [
+  "-C", "link-arg=-s",
+]
+```
+
+但是仅仅这样并不能完全去除敏感路径信息，还会有一些依赖库文件的绝对路径暴露
+暴力一点，直接替换敏感信息字段吧，比如将“/Users/Name”全局替换为"/Users/1234"
+
+ps:替换后的字符数量要和之前保持一致
+
+
+### GO
+
+
+
+
