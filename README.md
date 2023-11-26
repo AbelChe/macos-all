@@ -29,6 +29,7 @@
   * [空格预览关联自定义文件类型](#空格预览关联自定义文件类型)
   * [MacOS端微信小程序反编译](#MacOS端微信小程序反编译)
   * [编译安全（防止信息泄漏）](#编译安全（防止信息泄漏）)
+  * [MacOS深色主题下应用程序标题栏的适配问题](MacOS深色主题下应用程序标题栏的适配问题)
 
 ## 杀掉可恶的adobe进程
 
@@ -466,6 +467,22 @@ ps:替换后的字符数量要和之前保持一致
 
 ### GO
 
+## MacOS深色主题下应用程序标题栏的适配问题
 
+比如Burpsuite启动之后，修改burp主题，标题栏仍然是可恶的白色，可以在info.plist文件30行附近添加`NSRequiresAquaSystemAppearance`选项
+
+```xml
+<dict>
+......
+<key>NSRequiresAquaSystemAppearance</key>
+<false/>
+...
+</dict>
+```
+
+其他java应用程序可以在命令行启动时候添加如下参数：
+```
+-Dapple.awt.application.appearance=system
+```
 
 
